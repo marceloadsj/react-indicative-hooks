@@ -12,16 +12,57 @@ npm install --save react-indicative-hooks
 
 ## Usage
 
+### useStateValidator
+
 ```jsx
-import React, { Component } from 'react'
+import React from "react";
+import { useStateValidator } from "react-indicative-hooks";
 
-import { useMyHook } from 'react-indicative-hooks'
+const rules = "required";
 
-const Example = () => {
-  const example = useMyHook()
+const messages = {
+  required: "Please, fill the input with some data"
+};
+
+export default function Input() {
+  const [value, setValue, error] = useStateValidator("", rules, messages);
+
   return (
-    <div>{example}</div>
-  )
+    <>
+      <input value={value} onChange={e => setValue(e.target.value)} />
+      <br />
+      {error && error.message}
+    </>
+  );
+}
+```
+
+```jsx
+import React, { useState } from "react";
+import { useValidate } from "react-indicative-hooks";
+
+const rules = {
+  name: "required",
+  email: "required|email"
+};
+
+const messages = {
+  "name.required": "Please, fill the name input with some data"
+};
+
+export default function Input() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const errors = useValidate({ name, email }, rules, messages);
+
+  return (
+    <>
+      <input value={name} onChange={e => setName(e.target.value)} />
+      <br />
+      <input value={email} onChange={e => setEmail(e.target.value)} />
+    </>
+  );
 }
 ```
 

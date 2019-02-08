@@ -31,7 +31,7 @@ export default function Input() {
     <>
       <input value={value} onChange={e => setValue(e.target.value)} />
       <br />
-      {error && error.message}
+      <p>{error && error.message}</p>
     </>
   );
 }
@@ -49,20 +49,23 @@ const rules = {
 };
 
 const messages = {
-  "name.required": "Please, fill the name input with some data"
+  "name.required": "Please, fill the name input with some data",
+  "email.email": "You need to enter a valid email"
 };
 
 export default function Form() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  const errors = useValidate({ name, email }, rules, messages);
+  const error = useValidate({ name, email }, rules, messages);
 
   return (
     <>
       <input value={name} onChange={e => setName(e.target.value)} />
       <br />
       <input value={email} onChange={e => setEmail(e.target.value)} />
+      <br />
+      <p>{error && error.message}</p>
     </>
   );
 }

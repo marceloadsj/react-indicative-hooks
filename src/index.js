@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
 import { validate } from "indicative";
 
-function useValidate(data, rules, messages) {
+function useValidate(data, rules, messages, formatter) {
   const [error, setError] = useState();
 
   useEffect(() => {
-    validate(data, rules, messages)
+    validate(data, rules, messages, formatter)
       .then(() => setError(undefined))
       .catch(errors => setError(errors[0]));
   }, Object.values(data));
@@ -13,7 +13,7 @@ function useValidate(data, rules, messages) {
   return error;
 }
 
-function useStateValidator(initialState, rules, messages) {
+function useStateValidator(initialState, rules, messages, formatter) {
   const [value, setValue] = useState(initialState);
   const [error, setError] = useState();
   const [touched, setTouched] = useState(false);
@@ -34,7 +34,7 @@ function useStateValidator(initialState, rules, messages) {
 
   useEffect(() => {
     if (touched) {
-      validate({ value }, { value: rules }, messages)
+      validate({ value }, { value: rules }, messages, formatter)
         .then(() => serError(undefined))
         .catch(errors => setError(errors[0]));
     }

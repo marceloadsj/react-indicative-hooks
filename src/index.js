@@ -2,15 +2,15 @@ import { useState, useEffect, useMemo } from "react";
 import { validate } from "indicative";
 
 function useValidate(data, rules, messages) {
-  const [errors, setErrors] = useState();
+  const [error, setError] = useState();
 
   useEffect(() => {
     validate(data, rules, messages)
-      .then(() => setErrors(undefined))
-      .catch(errors => setErrors(errors));
+      .then(() => setError(undefined))
+      .catch(errors => setError(errors[0]));
   }, Object.values(data));
 
-  return errors;
+  return error;
 }
 
 function useStateValidator(initialState, rules, messages) {

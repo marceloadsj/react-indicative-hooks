@@ -12,64 +12,7 @@ npm install --save react-indicative-hooks
 
 ## Usage
 
-### useStateValidator
-
-```jsx
-import React from "react";
-import { useStateValidator } from "react-indicative-hooks";
-
-const rules = "required";
-
-const messages = {
-  required: "Please, fill the input with some data"
-};
-
-export default function Input() {
-  const [value, setValue, error] = useStateValidator("", rules, messages);
-
-  return (
-    <>
-      <input value={value} onChange={e => setValue(e.target.value)} />
-      <br />
-      <p>{error && error.message}</p>
-    </>
-  );
-}
-```
-
-### useValidate
-
-```jsx
-import React, { useState } from "react";
-import { useValidate } from "react-indicative-hooks";
-
-const rules = {
-  name: "required",
-  email: "required|email"
-};
-
-const messages = {
-  "name.required": "Please, fill the name input with some data",
-  "email.email": "You need to enter a valid email"
-};
-
-export default function Form() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-
-  const error = useValidate({ name, email }, rules, messages);
-
-  return (
-    <>
-      <input value={name} onChange={e => setName(e.target.value)} />
-      <br />
-      <input value={email} onChange={e => setEmail(e.target.value)} />
-      <br />
-      <p>{error && error.message}</p>
-    </>
-  );
-}
-```
+[Please, check the Docs here!](https://marceloadsj.github.io/react-indicative-hooks/)
 
 ## License
 

@@ -52,7 +52,7 @@ const messages = {
   "name.required": "Please, fill the name input with some data"
 };
 
-export default function Input() {
+export default function Form() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 

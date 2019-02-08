@@ -37,6 +37,8 @@ export default function Input() {
 }
 ```
 
+### useValidate
+
 ```jsx
 import React, { useState } from "react";
 import { useValidate } from "react-indicative-hooks";

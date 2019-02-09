@@ -1,8 +1,12 @@
 {
   "name": "react-indicative-hooks",
-  "version": "1.0.0",
-  "description": "A wrapper between React Hooks and Indicative libraries",
-  "author": "marceloadsj",
+  "version": "1.1.0",
+  "description": "A wrapper between React Hooks and Indicative library",
+  "author": {
+    "name": "Marcelo Junior",
+    "site": "https://github.com/marceloadsj",
+    "email": "marceloadsj1@gmail.com"
+  },
   "license": "MIT",
   "repository": "marceloadsj/react-indicative-hooks",
   "main": "dist/index.js",

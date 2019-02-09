@@ -29,7 +29,7 @@ export default {
     resolve(),
     commonjs({
       namedExports: {
-        "node_modules/indicative/builds/main.js": ["validate"]
+        "node_modules/indicative/builds/main.js": ["validate", "validateAll"]
       }
     })
   ]

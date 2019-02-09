@@ -1,27 +1,55 @@
-import { useState, useEffect, useMemo } from "react";
-import { validate } from "indicative";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { validate, validateAll } from "indicative";
 
-function useValidate(data, rules, messages, formatter) {
+function useValidate(data, rules, messages = {}) {
+  const { formatter, onSuccess, onError } = messages;
+  messages = messages.messages || messages;
+
   const [error, setError] = useState();
 
   useEffect(() => {
     validate(data, rules, messages, formatter)
-      .then(() => setError(undefined))
-      .catch(errors => setError(errors[0]));
+      .then(() => {
+        setError(undefined);
+        if (onSuccess) onSuccess();
+      })
+      .catch(errors => {
+        setError(errors[0]);
+        if (onError) onError();
+      });
   }, Object.values(data));
 
   return error;
 }
 
-function useStateValidator(initialState, rules, messages, formatter) {
+function useValidateAll(data, rules, messages = {}) {
+  const { formatter, onSuccess, onError } = messages;
+  messages = messages.messages || messages;
+
+  const [errors, setErrors] = useState();
+
+  useEffect(() => {
+    validateAll(data, rules, messages, formatter)
+      .then(() => {
+        setErrors(undefined);
+        if (onSuccess) onSuccess();
+      })
+      .catch(errors => {
+        setErrors(errors);
+        if (onError) onError();
+      });
+  }, Object.values(data));
+
+  return errors;
+}
+
+function useStateValidator(initialState, rules, messages = {}) {
+  const { formatter, runOnMount, onSuccess, onError } = messages;
+  messages = messages.messages || messages;
+
   const [value, setValue] = useState(initialState);
   const [error, setError] = useState();
   const [touched, setTouched] = useState(false);
-
-  function setValueAndTouched(value) {
-    if (!touched) setTouched(true);
-    setValue(value);
-  }
 
   messages = useMemo(() => {
     if (messages) {
@@ -33,14 +61,31 @@ function useStateValidator(initialState, rules, messages, formatter) {
   }, [messages]);
 
   useEffect(() => {
-    if (touched) {
+    if (runOnMount || touched) {
       validate({ value }, { value: rules }, messages, formatter)
-        .then(() => serError(undefined))
-        .catch(errors => setError(errors[0]));
+        .then(() => {
+          setError(undefined);
+          if (onSuccess) onSuccess();
+        })
+        .catch(errors => {
+          setError(errors[0]);
+          if (onError) onError();
+        });
     }
   }, [value]);
+
+  const setValueAndTouched = useCallback(
+    value => setTouched(true) & setValue(value),
+    []
+  );
 
   return [value, setValueAndTouched, error];
 }
 
-export { useValidate, useStateValidator };
+export {
+  useValidate,
+  useValidateAll,
+  useStateValidator,
+  validate,
+  validateAll
+};

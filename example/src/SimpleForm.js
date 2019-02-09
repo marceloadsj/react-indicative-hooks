@@ -11,7 +11,7 @@ const messages = {
   "email.email": "You need to enter a valid email"
 };
 
-export default function Form() {
+export default function SimpleForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -19,19 +19,23 @@ export default function Form() {
 
   return (
     <>
+      Name
       <input
         value={name}
         onChange={e => setName(e.target.value)}
         data-testid="name"
+        className="ml-2 mr-5 mb-5"
       />
-      <br />
+      Email
       <input
         value={email}
         onChange={e => setEmail(e.target.value)}
         data-testid="email"
+        className="ml-2 mr-5 mb-5"
       />
-      <br />
-      <p data-testid="error">{error && error.message}</p>
+      <p className="text-red" data-testid="error">
+        {error && error.message}
+      </p>
     </>
   );
 }

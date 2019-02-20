@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { validate, validateAll } from "indicative";
+import { validate, validateAll, rule } from "indicative";
 
 function useValidate(data, rules, messages = {}) {
   const { formatter, onSuccess, onError } = messages;
@@ -10,12 +10,13 @@ function useValidate(data, rules, messages = {}) {
   useEffect(() => {
     validate(data, rules, messages, formatter)
       .then(() => {
-        setError(undefined);
+        setError();
         if (onSuccess) onSuccess();
       })
       .catch(errors => {
-        setError(errors[0]);
-        if (onError) onError();
+        const error = errors[0];
+        setError(error);
+        if (onError) onError(error);
       });
   }, Object.values(data));
 
@@ -31,12 +32,12 @@ function useValidateAll(data, rules, messages = {}) {
   useEffect(() => {
     validateAll(data, rules, messages, formatter)
       .then(() => {
-        setErrors(undefined);
+        setErrors();
         if (onSuccess) onSuccess();
       })
       .catch(errors => {
         setErrors(errors);
-        if (onError) onError();
+        if (onError) onError(errors);
       });
   }, Object.values(data));
 
@@ -44,11 +45,19 @@ function useValidateAll(data, rules, messages = {}) {
 }
 
 function useStateValidator(initialState, rules, messages = {}) {
-  const { formatter, runOnMount, onSuccess, onError } = messages;
+  const {
+    formatter,
+    confirmationValue,
+    runOnMount,
+    onSuccess,
+    onError,
+    setError,
+    setValue
+  } = messages;
   messages = messages.messages || messages;
 
-  const [value, setValue] = useState(initialState);
-  const [error, setError] = useState();
+  const [value, setInternalValue] = useState(initialState);
+  const [error, setInternalError] = useState();
   const [touched, setTouched] = useState(false);
 
   messages = useMemo(() => {
@@ -62,22 +71,36 @@ function useStateValidator(initialState, rules, messages = {}) {
 
   useEffect(() => {
     if (runOnMount || touched) {
-      validate({ value }, { value: rules }, messages, formatter)
+      validate(
+        { value, value_confirmation: confirmationValue },
+        { value: rules },
+        messages,
+        formatter
+      )
         .then(() => {
-          setError(undefined);
+          setInternalError();
+          if (setError) setError();
           if (onSuccess) onSuccess();
         })
         .catch(errors => {
-          setError(errors[0]);
-          if (onError) onError();
+          const error = errors[0];
+          setInternalError(error);
+          if (setError) setError(error);
+          if (onError) onError(error);
         });
     }
-  }, [value]);
+  }, [value, confirmationValue]);
 
-  const setValueAndTouched = useCallback(
-    value => setTouched(true) & setValue(value),
-    []
-  );
+  const setValueAndTouched = useCallback(value => {
+    if (!touched) setTouched(true);
+
+    if (typeof value === "object" && value.target) {
+      value = value.target.value;
+    }
+
+    setInternalValue(value);
+    if (setValue) setValue(value);
+  }, []);
 
   return [value, setValueAndTouched, error];
 }
@@ -87,5 +110,6 @@ export {
   useValidateAll,
   useStateValidator,
   validate,
-  validateAll
+  validateAll,
+  rule
 };

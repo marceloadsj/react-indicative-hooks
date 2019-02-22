@@ -18,7 +18,7 @@ const plugins = [
   resolve(),
   commonjs({
     namedExports: {
-      "node_modules/indicative/builds/main.js": ["validate", "validateAll"]
+      "node_modules/indicative/builds/main.js": ["validate", "validateAll", "rule"]
     }
   })
 ];

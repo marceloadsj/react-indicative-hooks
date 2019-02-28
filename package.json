@@ -1,6 +1,6 @@
 {
   "name": "react-indicative-hooks",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "A wrapper between React Hooks and Indicative library",
   "author": {
     "name": "Marcelo Junior",
@@ -13,6 +13,10 @@
   "browser": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
+  "files": [
+    "dist/*.js",
+    "dist/*.js.map"
+  ],
   "engines": {
     "node": ">=8",
     "npm": ">=5"

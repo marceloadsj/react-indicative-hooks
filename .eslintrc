@@ -44,6 +44,18 @@
 
     // Enforce boolean attributes notation in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
-    "react/jsx-boolean-value": ["warn", "never", { "always": [] }]
+    "react/jsx-boolean-value": ["warn", "never", { "always": [] }],
+
+    // this option sets a specific tab width for your code
+    // https://eslint.org/docs/rules/indent
+    "indent": ["warn", 4],
+
+    // Enforce JSX indentation
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
+    "react/jsx-indent": ["warn", 4],
+
+    // Validate props indentation in JSX
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
+    "react/jsx-indent-props": ["warn", 4]
   }
 }

@@ -18,7 +18,7 @@ function useValidate(data, rules, messages = {}) {
         setError(error);
         if (onError) onError(error);
       });
-  }, [...Object.values(data), rules, messages]);
+  }, [...Object.values(data), ...Object.values(rules), ...Object.values(messages)]);
 
   return error;
 }
@@ -39,7 +39,7 @@ function useValidateAll(data, rules, messages = {}) {
         setErrors(errors);
         if (onError) onError(errors);
       });
-  }, [...Object.values(data), rules, messages]);
+  }, [...Object.values(data), ...Object.values(rules), ...Object.values(messages)]);
 
   return errors;
 }

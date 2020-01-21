@@ -1,6 +1,6 @@
 {
   "name": "react-indicative-hooks",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A wrapper between React Hooks and Indicative library",
   "author": {
     "name": "Marcelo Junior",

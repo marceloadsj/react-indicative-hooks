@@ -14,10 +14,36 @@
     "sourceType": "module"
   },
   "rules": {
-    // don't force es6 functions to include space before paren
-    "space-before-function-paren": 0,
+    // Anything that is automatically fixable (by --fix) should be warning instead of error
 
-    // allow specifying true explicitly for boolean props
-    "react/jsx-boolean-value": 0
+    // require or disallow use of semicolons instead of ASI
+    // https://eslint.org/docs/rules/semi
+    "semi": ["warn", "always"],
+
+    // specify whether double or single quotes should be used
+    // https://eslint.org/docs/rules/quotes
+    "quotes": ["warn", "single", { "avoidEscape": true }],
+
+    // Specify whether double or single quotes should be used in JSX attributes
+    // https://eslint.org/docs/rules/jsx-quotes
+    "jsx-quotes": ["warn", "prefer-double"],
+
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-fragments.md
+    "react/jsx-fragments": ["warn", "element"],
+
+    // require or disallow space before function opening parenthesis
+    // https://eslint.org/docs/rules/space-before-function-paren
+    "space-before-function-paren": [
+        "warn",
+        {
+            "anonymous": "always",
+            "named": "never",
+            "asyncArrow": "always"
+        }
+    ],
+
+    // Enforce boolean attributes notation in JSX
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
+    "react/jsx-boolean-value": ["warn", "never", { "always": [] }]
   }
 }

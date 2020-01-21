@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
-import { validate, validateAll, rule } from "indicative";
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import { validate, validateAll, rule } from 'indicative';
 
 function useValidate(data, rules, messages = {}) {
   const { formatter, onSuccess, onError } = messages;
@@ -94,7 +94,7 @@ function useStateValidator(initialState, rules, messages = {}) {
   const setValueAndTouched = useCallback(value => {
     if (!touched) setTouched(true);
 
-    if (typeof value === "object" && value.target) {
+    if (typeof value === 'object' && value.target) {
       value = value.target.value;
     }
 

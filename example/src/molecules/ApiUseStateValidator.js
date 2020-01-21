@@ -1,19 +1,19 @@
-import React from "react";
+import React, { Fragment } from 'react';
 
-import Divider from "../atoms/Divider";
-import ApiFunction from "../atoms/ApiFunction";
-import CodeBlock from "../atoms/CodeBlock";
-import ApiParams from "./ApiParams";
+import Divider from '../atoms/Divider';
+import ApiFunction from '../atoms/ApiFunction';
+import CodeBlock from '../atoms/CodeBlock';
+import ApiParams from './ApiParams';
 
-import SimpleInput from "../SimpleInput";
-import InputWithOptions from "../InputWithOptions";
+import SimpleInput from '../SimpleInput';
+import InputWithOptions from '../InputWithOptions';
 
 export default function ApiUseStateValidator() {
   return (
-    <>
+    <Fragment>
       <ApiFunction
         title="useStateValidator"
-        params={["initialState", "rules", "messagesOrOptions"]}
+        params={['initialState', 'rules', 'messagesOrOptions']}
         response="Array with [value, setValue, error], Error as Object or undefined"
       />
 
@@ -105,6 +105,6 @@ export default function InputWithOptions() {
   );
 }`}
       </CodeBlock>
-    </>
+    </Fragment>
   );
 }

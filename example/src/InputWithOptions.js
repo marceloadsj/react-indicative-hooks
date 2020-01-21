@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useStateValidator } from "react-indicative-hooks";
+import React, { Fragment, useState } from 'react';
+import { useStateValidator } from 'react-indicative-hooks';
 
-const rules = "required";
+const rules = 'required';
 
 const messages = {
-  required: "Please, fill the input with some data"
+  required: 'Please, fill the input with some data'
 };
 
 export default function InputWithOptions() {
@@ -17,12 +17,12 @@ export default function InputWithOptions() {
     onError: () => setShow(true)
   };
 
-  const [value, setValue, error] = useStateValidator("", rules, options);
+  const [value, setValue, error] = useStateValidator('', rules, options);
 
   return (
-    <>
+    <Fragment>
       <p className="text-red mb-5" data-testid="alert">
-        {show && "Sorry, you have an error"}
+        {show && 'Sorry, you have an error'}
       </p>
       Value
       <input
@@ -34,6 +34,6 @@ export default function InputWithOptions() {
       <p className="text-red" data-testid="error">
         {error && error.message}
       </p>
-    </>
+    </Fragment>
   );
 }

@@ -1,20 +1,20 @@
-import React from "react";
+import React, { Fragment } from 'react';
 
-import DataParam from "../atoms/DataParam";
-import Divider from "../atoms/Divider";
-import CodeBlock from "../atoms/CodeBlock";
-import ApiFunction from "../atoms/ApiFunction";
-import ApiParams from "../molecules/ApiParams";
+import DataParam from '../atoms/DataParam';
+import Divider from '../atoms/Divider';
+import CodeBlock from '../atoms/CodeBlock';
+import ApiFunction from '../atoms/ApiFunction';
+import ApiParams from '../molecules/ApiParams';
 
-import SimpleFormAll from "../SimpleFormAll";
-import FormAllWithOptions from "../FormAllWithOptions";
+import SimpleFormAll from '../SimpleFormAll';
+import FormAllWithOptions from '../FormAllWithOptions';
 
 export default function ApiUseValidate() {
   return (
-    <>
+    <Fragment>
       <ApiFunction
         title="useValidateAll"
-        params={["data", "rules", "messagesOrOptions"]}
+        params={['data', 'rules', 'messagesOrOptions']}
         response="Array of Errors or undefined"
       />
 
@@ -129,6 +129,6 @@ export default function FormAllWithOptions() {
   );
 }`}
       </CodeBlock>
-    </>
+    </Fragment>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function NavLogo() {
   return (
@@ -6,7 +6,7 @@ export default function NavLogo() {
       <span className="text-xl">
         <span role="img" aria-label="react-indicative-hooks">
           ✈️ ️️
-        </span>{" "}
+        </span>{' '}
         React Indicative Hooks
       </span>
     </div>

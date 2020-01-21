@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import Nav from "./organisms/Nav";
-import InstallSection from "./organisms/InstallSection";
-import ApiSection from "./organisms/ApiSection";
+import Nav from './organisms/Nav';
+import InstallSection from './organisms/InstallSection';
+import ApiSection from './organisms/ApiSection';
 
 // import SimpleInput from './SimpleInput';
 // import InputWithOptions from './InputWithOptions';

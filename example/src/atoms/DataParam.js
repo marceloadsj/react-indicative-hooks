@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 export default function DataParam() {
   return (
     <li>
       data: The object you want to validate with all fields matching the rules,
-      check{" "}
+      check{' '}
       <a
         target="_blank"
         rel="noopener noreferrer"

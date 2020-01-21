@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import NavLogo from "../atoms/NavLogo";
-import NavButton from "../atoms/NavButton";
-import NavLinks from "../molecules/NavLinks";
+import NavLogo from '../atoms/NavLogo';
+import NavButton from '../atoms/NavButton';
+import NavLinks from '../molecules/NavLinks';
 
 export default function Nav() {
   return (

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import ApiIndicativeParams from "../atoms/ApiIndicativeParams";
+import ApiIndicativeParams from '../atoms/ApiIndicativeParams';
 
 export default function ApiParams({ children, runOnMount, indicativeParams }) {
   return (
@@ -14,7 +14,7 @@ export default function ApiParams({ children, runOnMount, indicativeParams }) {
         keys:
         <ul>
           <li>
-            messages (optional): Check how you can use messages{" "}
+            messages (optional): Check how you can use messages{' '}
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -25,7 +25,7 @@ export default function ApiParams({ children, runOnMount, indicativeParams }) {
           </li>
 
           <li>
-            formatter (optional): Check how to use formatters{" "}
+            formatter (optional): Check how to use formatters{' '}
             <a
               target="_blank"
               rel="noopener noreferrer"

@@ -1,17 +1,17 @@
-import React from "react";
-import { useStateValidator } from "react-indicative-hooks";
+import React, { Fragment } from 'react';
+import { useStateValidator } from 'react-indicative-hooks';
 
-const rules = "required";
+const rules = 'required';
 
 const messages = {
-  required: "Please, fill the input with some data"
+  required: 'Please, fill the input with some data'
 };
 
 export default function SimpleInput() {
-  const [value, setValue, error] = useStateValidator("", rules, messages);
+  const [value, setValue, error] = useStateValidator('', rules, messages);
 
   return (
-    <>
+    <Fragment>
       Value
       <input
         value={value}
@@ -22,6 +22,6 @@ export default function SimpleInput() {
       <p className="text-red" data-testid="error">
         {error && error.message}
       </p>
-    </>
+    </Fragment>
   );
 }

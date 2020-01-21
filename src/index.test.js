@@ -4,7 +4,7 @@ import {
   render,
   fireEvent,
   waitForDomChange
-} from "react-testing-library";
+} from '@testing-library/react';
 
 import SimpleForm from "../example/src/SimpleForm";
 import FormWithOptions from "../example/src/FormWithOptions";

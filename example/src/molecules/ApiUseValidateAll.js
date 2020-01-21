@@ -10,24 +10,24 @@ import SimpleFormAll from '../SimpleFormAll';
 import FormAllWithOptions from '../FormAllWithOptions';
 
 export default function ApiUseValidate() {
-  return (
-    <Fragment>
-      <ApiFunction
-        title="useValidateAll"
-        params={['data', 'rules', 'messagesOrOptions']}
-        response="Array of Errors or undefined"
-      />
+    return (
+        <Fragment>
+            <ApiFunction
+                title="useValidateAll"
+                params={['data', 'rules', 'messagesOrOptions']}
+                response="Array of Errors or undefined"
+            />
 
-      <ApiParams indicativeParams>
-        <DataParam />
-      </ApiParams>
+            <ApiParams indicativeParams>
+                <DataParam />
+            </ApiParams>
 
-      <div className="m-10">
-        <SimpleFormAll />
-      </div>
+            <div className="m-10">
+                <SimpleFormAll />
+            </div>
 
-      <CodeBlock comp>
-        {`import React, { useState } from "react";
+            <CodeBlock comp>
+                {`import React, { useState } from "react";
 import { useValidateAll } from "react-indicative-hooks";
 
 const rules = {
@@ -68,16 +68,16 @@ export default function SimpleFormAll() {
     </>
   );
 }`}
-      </CodeBlock>
+            </CodeBlock>
 
-      <Divider />
+            <Divider />
 
-      <div className="m-10">
-        <FormAllWithOptions />
-      </div>
+            <div className="m-10">
+                <FormAllWithOptions />
+            </div>
 
-      <CodeBlock comp>
-        {`import React, { useState, useCallback } from "react";
+            <CodeBlock comp>
+                {`import React, { useState, useCallback } from "react";
 import { useValidateAll } from "react-indicative-hooks";
 
 const rules = {
@@ -128,7 +128,7 @@ export default function FormAllWithOptions() {
     </>
   );
 }`}
-      </CodeBlock>
-    </Fragment>
-  );
+            </CodeBlock>
+        </Fragment>
+    );
 }

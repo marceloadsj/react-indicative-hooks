@@ -1,5 +1,8 @@
 # ✈️ [react-indicative-hooks](https://marceloadsj.github.io/react-indicative-hooks/)
 
+## Deprecated as indicative stopped to support for browsers
+- [https://indicative.adonisjs.com/guides/master/upgrade-guide#removing-browser-support](https://indicative.adonisjs.com/guides/master/upgrade-guide#removing-browser-support)
+
 > A wrapper between React Hooks and Indicative library
 
 [![NPM](https://img.shields.io/npm/v/react-indicative-hooks.svg)](https://www.npmjs.com/package/react-indicative-hooks)

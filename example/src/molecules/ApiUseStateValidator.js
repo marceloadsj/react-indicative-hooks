@@ -1,35 +1,34 @@
-import React from "react";
+import React, { Fragment } from 'react';
 
-import Divider from "../atoms/Divider";
-import ApiFunction from "../atoms/ApiFunction";
-import CodeBlock from "../atoms/CodeBlock";
-import ApiParams from "./ApiParams";
+import Divider from '../atoms/Divider';
+import ApiFunction from '../atoms/ApiFunction';
+import CodeBlock from '../atoms/CodeBlock';
+import ApiParams from './ApiParams';
 
-import SimpleInput from "../SimpleInput";
-import InputWithOptions from "../InputWithOptions";
+import SimpleInput from '../SimpleInput';
+import InputWithOptions from '../InputWithOptions';
 
 export default function ApiUseStateValidator() {
-  return (
-    <>
-      <ApiFunction
-        title="useStateValidator"
-        params={["initialState", "rules", "messagesOrOptions"]}
-        response="Array with [value, setValue, error], Error as Object or undefined"
-      />
+    return (
+        <Fragment>
+            <ApiFunction
+                title="useStateValidator"
+                params={['initialState', 'rules', 'messagesOrOptions']}
+                response="Array with [value, setValue, error], Error as Object or undefined"
+            />
 
-      <ApiParams indicativeParams runOnMount>
-        <li>
-          initialState: The state that your input starts with, like the empty
-          string used in useState("")
-        </li>
-      </ApiParams>
+            <ApiParams indicativeParams runOnMount>
+                <li>
+                    initialState: The state that your input starts with, like the empty string used in useState("")
+                </li>
+            </ApiParams>
 
-      <div className="m-10">
-        <SimpleInput />
-      </div>
+            <div className="m-10">
+                <SimpleInput />
+            </div>
 
-      <CodeBlock comp>
-        {`import React from "react";
+            <CodeBlock comp>
+                {`import React from "react";
 import { useStateValidator } from "react-indicative-hooks";
 
 const rules = "required";
@@ -56,16 +55,16 @@ export default function SimpleInput() {
     </>
   );
 }`}
-      </CodeBlock>
+            </CodeBlock>
 
-      <Divider />
+            <Divider />
 
-      <div className="m-10">
-        <InputWithOptions />
-      </div>
+            <div className="m-10">
+                <InputWithOptions />
+            </div>
 
-      <CodeBlock comp>
-        {`import React, { useState } from "react";
+            <CodeBlock comp>
+                {`import React, { useState } from "react";
 import { useStateValidator } from "react-indicative-hooks";
 
 const rules = "required";
@@ -104,7 +103,7 @@ export default function InputWithOptions() {
     </>
   );
 }`}
-      </CodeBlock>
-    </>
-  );
+            </CodeBlock>
+        </Fragment>
+    );
 }

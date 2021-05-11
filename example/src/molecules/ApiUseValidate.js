@@ -1,33 +1,33 @@
-import React from "react";
+import React, { Fragment } from 'react';
 
-import DataParam from "../atoms/DataParam";
-import Divider from "../atoms/Divider";
-import CodeBlock from "../atoms/CodeBlock";
-import ApiFunction from "../atoms/ApiFunction";
-import ApiParams from "../molecules/ApiParams";
+import DataParam from '../atoms/DataParam';
+import Divider from '../atoms/Divider';
+import CodeBlock from '../atoms/CodeBlock';
+import ApiFunction from '../atoms/ApiFunction';
+import ApiParams from '../molecules/ApiParams';
 
-import SimpleForm from "../SimpleForm";
-import FormWithOptions from "../FormWithOptions";
+import SimpleForm from '../SimpleForm';
+import FormWithOptions from '../FormWithOptions';
 
 export default function ApiUseValidate() {
-  return (
-    <>
-      <ApiFunction
-        title="useValidate"
-        params={["data", "rules", "messagesOrOptions"]}
-        response="Error Object or undefined"
-      />
+    return (
+        <Fragment>
+            <ApiFunction
+                title="useValidate"
+                params={['data', 'rules', 'messagesOrOptions']}
+                response="Error Object or undefined"
+            />
 
-      <ApiParams indicativeParams>
-        <DataParam />
-      </ApiParams>
+            <ApiParams indicativeParams>
+                <DataParam />
+            </ApiParams>
 
-      <div className="m-10">
-        <SimpleForm />
-      </div>
+            <div className="m-10">
+                <SimpleForm />
+            </div>
 
-      <CodeBlock comp>
-        {`import React, { useState } from "react";
+            <CodeBlock comp>
+                {`import React, { useState } from "react";
 import { useValidate } from "react-indicative-hooks";
 
 const rules = {
@@ -68,16 +68,16 @@ export default function SimpleForm() {
     </>
   );
 }`}
-      </CodeBlock>
+            </CodeBlock>
 
-      <Divider />
+            <Divider />
 
-      <div className="m-10">
-        <FormWithOptions />
-      </div>
+            <div className="m-10">
+                <FormWithOptions />
+            </div>
 
-      <CodeBlock comp>
-        {`import React, { useState } from "react";
+            <CodeBlock comp>
+                {`import React, { useState } from "react";
 import { useValidate } from "react-indicative-hooks";
 
 const rules = {
@@ -128,7 +128,7 @@ export default function FormWithOptions() {
     </>
   );
 }`}
-      </CodeBlock>
-    </>
-  );
+            </CodeBlock>
+        </Fragment>
+    );
 }
